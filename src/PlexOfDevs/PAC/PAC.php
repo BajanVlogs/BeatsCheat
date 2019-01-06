@@ -37,27 +37,27 @@ class PAC extends PluginBase
     $Server = $this->getServer();
     
     $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
-    $Logger->info(TextFormat::ESCAPE."$cl" . "[PAC] > PlexAntiCheat Activated"            );
-    $Logger->info(TextFormat::ESCAPE."$cl" . "[PAC] > PlexAntiCheat v3.3.10 [PlexOfDevs]");
-    $Logger->info(TextFormat::ESCAPE."$cl" . "[PAC] > Loading Modules");
-    if($Config->get("ForceOP"    )) $Logger->info(TextFormat::ESCAPE."$cl"."[PAC] > Enabling AntiForceOP"    );
-    if($Config->get("NoClip"     )) $Logger->info(TextFormat::ESCAPE."$cl"."[PAC] > Enabling AntiNoClip"     );
-    if($Config->get("Fly"        )) $Logger->info(TextFormat::ESCAPE."$cl"."[PAC] > Enabling AntiFly"        );
-    if($Config->get("Fly"        )) $Logger->info(TextFormat::ESCAPE."$cl"."[PAC] > Enabling AntiSpider"     );
-    if($Config->get("Glide"      )) $Logger->info(TextFormat::ESCAPE."$cl"."[PAC] > Enabling AntiGlide"      );
-    if($Config->get("KillAura"   )) $Logger->info(TextFormat::ESCAPE."$cl"."[PAC] > Enabling AntiKillAura"   );
-    if($Config->get("Reach"      )) $Logger->info(TextFormat::ESCAPE."$cl"."[PAC] > Enabling AntiReach"      );
-    if($Config->get("Speed"      )) $Logger->info(TextFormat::ESCAPE."$cl"."[PAC] > Enabling AntiSpeed"      );
-    if($Config->get("FastBow"    )) $Logger->info(TextFormat::ESCAPE."$cl"."[PAC] > Enabling AntiFastBow"    );
-    if($Config->get("Regen"      )) $Logger->info(TextFormat::ESCAPE."$cl"."[PAC] > Enabling AntiRegen"      );
+    $Logger->info(TextFormat::ESCAPE."$cl" . "[BC] > BeatsCheat Activated"            );
+    $Logger->info(TextFormat::ESCAPE."$cl" . "[BC] > BeatsCheat v3.3.10 [Kevin420J]");
+    $Logger->info(TextFormat::ESCAPE."$cl" . "[BC] > Loading Modules");
+    if($Config->get("ForceOP"    )) $Logger->info(TextFormat::ESCAPE."$cl"."[BC] > Enabling AntiForceOP"    );
+    if($Config->get("NoClip"     )) $Logger->info(TextFormat::ESCAPE."$cl"."[BC] > Enabling AntiNoClip"     );
+    if($Config->get("Fly"        )) $Logger->info(TextFormat::ESCAPE."$cl"."[BC] > Enabling AntiFly"        );
+    if($Config->get("Fly"        )) $Logger->info(TextFormat::ESCAPE."$cl"."[BC] > Enabling AntiSpider"     );
+    if($Config->get("Glide"      )) $Logger->info(TextFormat::ESCAPE."$cl"."[BC] > Enabling AntiGlide"      );
+    if($Config->get("KillAura"   )) $Logger->info(TextFormat::ESCAPE."$cl"."[BC] > Enabling AntiKillAura"   );
+    if($Config->get("Reach"      )) $Logger->info(TextFormat::ESCAPE."$cl"."[BC] > Enabling AntiReach"      );
+    if($Config->get("Speed"      )) $Logger->info(TextFormat::ESCAPE."$cl"."[BC] > Enabling AntiSpeed"      );
+    if($Config->get("FastBow"    )) $Logger->info(TextFormat::ESCAPE."$cl"."[BC] > Enabling AntiFastBow"    );
+    if($Config->get("Regen"      )) $Logger->info(TextFormat::ESCAPE."$cl"."[BC] > Enabling AntiRegen"      );
 
     if($Config->get("Config-Version") !== "3.6.4")
     {
-      $Logger->warning(TextFormat::ESCAPE."$cl"."[PAC] > Your Config is out of date!");
+      $Logger->warning(TextFormat::ESCAPE."$cl"."[BC] > Your Config is out of date!");
     }
     if($Config->get("Plugin-Version") !== "3.3.8" and $Config->get("Plugin-Version") !== "3.3.9" and $Config->get("Plugin-Version") !== "3.3.10")
     {
-      $Logger->error(TextFormat::ESCAPE."$cl"."[PAC] > Your Config is incompatible with this plugin version, please update immediately!");
+      $Logger->error(TextFormat::ESCAPE."$cl"."[BC] > Your Config is incompatible with this plugin version, please update immediately!");
       $Server->shutdown();
     }
 
@@ -98,8 +98,8 @@ class PAC extends PluginBase
     $Logger = $this->getServer()->getLogger();
     $Server = $this->getServer();
 
-    $Logger->info(TextFormat::ESCAPE."$cl"."[PAC] > You are no longer protected from cheats!");
-    $Logger->info(TextFormat::ESCAPE."$cl"."[PAC] > PlexAntiCheat Deactivated");
+    $Logger->info(TextFormat::ESCAPE."$cl"."[BC] > You are no longer protected from cheats!");
+    $Logger->info(TextFormat::ESCAPE."$cl"."[BC] > BeatsCheat Deactivated");
     $Server->enablePlugin($this);
   }
     
@@ -118,14 +118,14 @@ class PAC extends PluginBase
             $sname = $sender->getName();
             $message  = "[PAC] > $sname used ForceOP!";
             $this->NotifyAdmins($message);
-            $sender->getPlayer()->kick(TextFormat::ESCAPE."$cl"."[PAC] > ForceOP detected!");
+            $sender->getPlayer()->kick(TextFormat::ESCAPE."$cl"."[BC] > ForceOP detected!");
           }
         }
       }
     }
-    if ($command->getName() === "PAC" or $command->getName() === "plexanticheat")
+    if ($command->getName() === "BC" or $command->getName() === "beatscheat")
     {
-      $sender->sendMessage(TextFormat::ESCAPE."$cl"."[PAC] > PlexAntiCheat v3.3.10 [PlexOfDevs] (~PlexOfDevs)");
+      $sender->sendMessage(TextFormat::ESCAPE."$cl"."[PAC] > BeatsCheat v3.3.10 [Kevin420J] (~Kevin420J)");
     }
 	return false;
   }
@@ -138,7 +138,7 @@ class PAC extends PluginBase
       foreach ($this->PlayerObservers as $observer)
       {
         $player = $observer->Player;
-        if ($player != null and $player->hasPermission("PAC.admin"))
+        if ($player != null and $player->hasPermission("BC.admin"))
         {
           $player->sendMessage(TextFormat::ESCAPE."$cl" . $message);
         }
@@ -150,7 +150,7 @@ class PAC extends PluginBase
 
 //////////////////////////////////////////////////////
 //                                                  //
-//     PAC by PlexOfDeevs.                          //
+//     BC by Kevin420J.                          //
 //     Distributed under the LGPL License.          //
 //                                                  //
 //////////////////////////////////////////////////////
